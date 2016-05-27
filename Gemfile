@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'unirest'
+
 # For the front-end assets
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
