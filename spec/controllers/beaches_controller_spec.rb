@@ -16,6 +16,8 @@ describe BeachesController do
     it "returns only the latest measurement for each beach" do
       skip('Only one measurement')
       skip('Make a mock response like the data api')
+      # Does this even need to be in the controller?
+      # There will be a Beaches#latest_readings method
     end
   end
 
