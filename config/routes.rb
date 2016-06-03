@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'beaches#show'
   get 'beaches' => 'beaches#index'
 
   get 'beaches/show'

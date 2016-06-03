@@ -5,5 +5,5 @@ Feature: Chicago beaches water data
 
   Scenario: User visits homepage
     Given I am a public user
-    When I go to "root_path"
+    When I go to "/"
     Then I will see current water data for all chicago beaches
