@@ -1,11 +1,10 @@
 <h1>Beaches#index</h1>
 <p>Find me in app/views/beaches/index.html.erb</p>
 <% @beaches.each do |b| %>
-  Beach: 
-  <%= b['beach_name'] %><br/>
+  <h3><%= b['beach_name'] %></h3>
   Water Temperature: 
   <%= b['water_temperature'] %><br/>
   Measurement Timestamp:
-  <%= b['measurement_timestamp'] %>
+  <%= b['measurement_timestamp'] %><br/>
 <% end %>
 
