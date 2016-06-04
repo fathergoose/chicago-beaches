@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'unirest'
+gem 'soda-ruby', require: 'soda'
 
 # For the front-end assets
 source 'https://rails-assets.org' do
