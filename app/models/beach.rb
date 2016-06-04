@@ -12,7 +12,9 @@ class Beach
 
     client = SODA::Client.new({ domain: 'data.cityofchicago.org',
                                 app_token: ENV['$CHICAGO_BEACH_APP_TOKEN'] })
-    response = client.get( dataset_id, {"$where" => "measurement_timestamp > '2016-06-03T00:00:00' AND measurement_timestamp < '2016-06-04T00:00:00'"})
+    response = client.get( dataset_id,
+                          {"$where" => "measurement_timestamp > '2016-06-03T00:00:00' AND measurement_timestamp < '2016-06-04T00:00:00'",
+                           "$order" => "measurement_timestamp DESC"})
     beaches = response
   end
 
