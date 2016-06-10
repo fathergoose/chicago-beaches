@@ -10,6 +10,7 @@
     Time::DATE_FORMATS[:soda] = '%Y-%m-%dT%H:%M:%S'
 
 class Beach
+  attr_accessor :water_temperature
   def self.latest_readings
       dataset_id = '46rk-hgnz'
 
@@ -30,6 +31,11 @@ class Beach
                           {"$where" => "measurement_timestamp > '#{two_hours_ago}'",
                            "$order" => "measurement_timestamp DESC"})
     beaches = response
+  end
+
+
+  def water_temperature_in_fahrenheit
+    water_temperature * 1.8 + 32
   end
 
 end
