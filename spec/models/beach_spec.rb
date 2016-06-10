@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Beach, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have measurements"
+  it "should derive it's attributes from it's measurements"
+  it "should have a current_water_temperature method"
+  
+
+
   describe "#to_fahrenheit" do
     it "converts a temperature units from C to F" do
       beach = Beach.new
