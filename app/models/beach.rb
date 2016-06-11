@@ -31,10 +31,7 @@ class Beach
                           {"$where" => "measurement_timestamp > '#{one_day_ago}'",
                            "$order" => "measurement_timestamp DESC",
                            "$limit" => "3"})
-    puts "<RESPONSE>"
-    puts response
-    puts "</RESPONSE>"
-    beaches = response
+    response.map { |r| BeachData::WaterQualityAutoSenseReading.new(r) }
   end
 
 
