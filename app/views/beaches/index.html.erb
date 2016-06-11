@@ -3,8 +3,8 @@
 <% @beaches.each do |b| %>
   <h3><%= b.beach_name %></h3>
   Water Temperature: 
-  <%= b.water_temperature %><br/>
+  <%= b.fahrenheit_water_temperature %><br/>
   Measurement Timestamp:
-  <%= b.measurement_timestamp %><br/>
+  <%= b.human_friendly_time %><br/>
 <% end %>
 
