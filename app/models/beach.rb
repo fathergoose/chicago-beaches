@@ -12,7 +12,7 @@
 class Beach
   attr_accessor :water_temperature
   def self.latest_readings
-      dataset_id = '46rk-hgnz'
+    dataset_id = '46rk-hgnz'
 
 
     right_now = Time.now.to_s :soda
@@ -28,8 +28,12 @@ class Beach
     client = SODA::Client.new({ domain: 'data.cityofchicago.org',
                                 app_token: ENV['$CHICAGO_BEACH_APP_TOKEN'] })
     response = client.get( dataset_id,
-                          {"$where" => "measurement_timestamp > '#{two_hours_ago}'",
-                           "$order" => "measurement_timestamp DESC"})
+                          {"$where" => "measurement_timestamp > '#{one_day_ago}'",
+                           "$order" => "measurement_timestamp DESC",
+                           "$limit" => "3"})
+    puts "<RESPONSE>"
+    puts response
+    puts "</RESPONSE>"
     beaches = response
   end
 
