@@ -1,4 +1,3 @@
-Time::DATE_FORMATS[:soda] = '%Y-%m-%dT%H:%M:%S'
 class Beach
   def self.latest_readings
     dataset_id = '46rk-hgnz'
