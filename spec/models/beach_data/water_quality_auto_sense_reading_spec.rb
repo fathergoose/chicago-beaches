@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BeachData::WaterQualityAutoSenseReading, type: :model do
-  describe "#fahrenheit_water_temperature" do
-    it "converts a temperature units from C to F" do
-      api_response = {
+  before :each do
+      sample_data = {
         battery_life: "9.4",
         beach_name: "Montrose Beach",
         measurement_id: "MontroseBeach201308300800",
@@ -15,10 +14,30 @@ RSpec.describe BeachData::WaterQualityAutoSenseReading, type: :model do
         wave_height: "0.08",
         wave_period: "3",
       }
-      the_response = Hashie::Mash.new(api_response)
-      reading = BeachData::WaterQualityAutoSenseReading.new(the_response)
+      @response = Hashie::Mash.new(sample_data)
+  end
+
+  describe "#fahrenheit_water_temperature" do
+    it "converts a temperature units from C to F" do
+      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
       temp_in_fahrenheit = reading.fahrenheit_water_temperature
       expect(temp_in_fahrenheit).to eq(68.5)
+    end
+  end
+  
+  describe "#human_friendly_time" do
+    it "returns a descriptive string" do
+      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
+      desciption = reading.human_friendly_time
+      expect(desciption).to be_a(String)
+    end
+
+    it "describes measurement_timestamp with 'less than an hour ago'" do
+      @response.measurement_timestamp = Time.now # Needs to be formatted in soda style
+      # but I think I can just use distance of time in words :/
+      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
+      description = reading.human_friendly_time
+      expect(description).to include('less than an hour ago')
     end
   end
 end
