@@ -1,8 +1,9 @@
 class BeachesController < ApplicationController
   def index
-    @beaches = Beach.latest_readings
+    @beaches = Beach.all
   end
 
   def show
+    @beach = Beach.where name: params[:name]
   end
 end
