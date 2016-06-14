@@ -17,8 +17,27 @@ RSpec.describe BeachData::WaterQualityAutoSenseReading, type: :model do
       @response = Hashie::Mash.new(sample_data)
   end
 
+  describe "#initialize" do
+    it "it assigns api data to instance variables" do
+      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
+      instance_vars = [
+        :@battery_life,
+        :@beach_name,
+        :@measurement_id,
+        :@measurement_timestamp,
+        :@measurement_timestamp_label,
+        :@transducer_depth,
+        :@turbidity,
+        :@water_temperature,
+        :@wave_height,
+        :@wave_period,
+      ]
+      expect(reading.instance_variables).to match_array(instance_vars)
+    end
+  end
+
   describe "#fahrenheit_water_temperature" do
-    it "converts a temperature units from C to F" do
+    it "converts water_temperature from C and returns F" do
       reading = BeachData::WaterQualityAutoSenseReading.new(@response)
       temp_in_fahrenheit = reading.fahrenheit_water_temperature
       expect(temp_in_fahrenheit).to eq(68.5)
