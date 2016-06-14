@@ -71,22 +71,6 @@ module BeachData
       fahrenheit_float.round(1)
     end
 
-    # Return a descriptive string estimating how long ago
-    # the last measurement was taken. "...ago"
-    def human_friendly_time
-      seconds_ago = Time.now - @measurement_timestamp
-      if seconds_ago < 3600
-        "less than an hour ago"
-      elsif seconds_ago < 4800
-        "about an hour ago"
-      elsif seconds_ago < 6000
-        "about an hour and a half ago"
-      else
-        hours_ago = seconds_ago / 3600
-        "about #{hours_ago.round(0)} hours ago"
-      end
-    end
-
     private
 
     # The arrogant Chi_data_api just uses local time with no stamp :/

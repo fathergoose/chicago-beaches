@@ -24,20 +24,4 @@ RSpec.describe BeachData::WaterQualityAutoSenseReading, type: :model do
       expect(temp_in_fahrenheit).to eq(68.5)
     end
   end
-  
-  describe "#human_friendly_time" do
-    it "returns a descriptive string" do
-      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
-      desciption = reading.human_friendly_time
-      expect(desciption).to be_a(String)
-    end
-
-    it "describes measurement_timestamp with 'less than an hour ago'" do
-      @response.measurement_timestamp = Time.now # Needs to be formatted in soda style
-      # but I think I can just use distance of time in words :/
-      reading = BeachData::WaterQualityAutoSenseReading.new(@response)
-      description = reading.human_friendly_time
-      expect(description).to include('less than an hour ago')
-    end
-  end
 end
